@@ -1,648 +1,220 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>佛山市永铨食品机械有限公司 | 专业食品机械制造商</title>
-    <!-- 使用简洁的现代风格，无外部依赖，纯原生HTML/CSS，轻量且适配移动端 -->
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: system-ui, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
-            background-color: #f9fafb;
-            color: #1f2d3d;
-            line-height: 1.5;
-            scroll-behavior: smooth;
-        }
-
-        /* 容器 */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* 头部导航 */
-        .navbar {
-            background-color: #ffffff;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-flex {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            padding: 16px 0;
-        }
-
-        .logo h1 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #1e6f3f;
-            letter-spacing: -0.3px;
-        }
-
-        .logo p {
-            font-size: 0.75rem;
-            color: #5a6874;
-            margin-top: 4px;
-            font-weight: 400;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 500;
-            color: #2c3e4e;
-            transition: color 0.2s;
-            font-size: 1rem;
-        }
-
-        .nav-links a:hover {
-            color: #1e6f3f;
-        }
-
-        /* 移动端菜单调整 */
-        @media (max-width: 768px) {
-            .nav-flex {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
-            .nav-links {
-                gap: 24px;
-                flex-wrap: wrap;
-                justify-content: center;
-                padding: 8px 0;
-            }
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* 按钮公用 */
-        .btn {
-            display: inline-block;
-            background-color: #1e6f3f;
-            color: white;
-            padding: 10px 24px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.2s, transform 0.1s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: #155a34;
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid #1e6f3f;
-            color: #1e6f3f;
-        }
-
-        .btn-outline:hover {
-            background-color: #1e6f3f;
-            color: white;
-        }
-
-        /* hero 区 */
-        .hero {
-            background: linear-gradient(105deg, #ebf8f0 0%, #d9f0e4 100%);
-            padding: 70px 0 80px;
-            border-radius: 0 0 40px 40px;
-            margin-bottom: 20px;
-        }
-
-        .hero-grid {
-            display: flex;
-            align-items: center;
-            gap: 48px;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        .hero-text {
-            flex: 1;
-            min-width: 260px;
-        }
-
-        .hero-text h2 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: #1a4d2e;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            color: #2c5a3e;
-            margin-bottom: 28px;
-            max-width: 550px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .hero-image {
-            flex: 0.8;
-            background: rgba(30, 111, 63, 0.1);
-            border-radius: 32px;
-            padding: 20px;
-            text-align: center;
-            backdrop-filter: blur(2px);
-            min-width: 240px;
-        }
-
-        .hero-svg {
-            width: 100%;
-            max-width: 320px;
-            height: auto;
-        }
-
-        /* 通用段落标题 */
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 48px;
-            color: #1e2f3c;
-            position: relative;
-        }
-
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 70px;
-            height: 3px;
-            background-color: #1e6f3f;
-            margin: 12px auto 0;
-            border-radius: 4px;
-        }
-
-        /* 产品卡片 */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 32px;
-            margin: 40px 0 20px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 24px;
-            padding: 28px 20px;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid #eef2f0;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
-            border-color: #cde4d8;
-        }
-
-        .product-icon {
-            font-size: 3.4rem;
-            margin-bottom: 20px;
-        }
-
-        .product-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            color: #1f3b2c;
-        }
-
-        .product-card p {
-            color: #5b6f7e;
-            font-size: 0.95rem;
-        }
-
-        /* 优势区域 */
-        .advantages {
-            background-color: #ffffff;
-            padding: 70px 0;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 36px;
-            text-align: center;
-        }
-
-        .feature-item {
-            padding: 16px;
-        }
-
-        .feature-icon {
-            font-size: 2.6rem;
-            margin-bottom: 16px;
-        }
-
-        .feature-item h4 {
-            font-size: 1.35rem;
-            margin-bottom: 8px;
-            color: #1a4d2e;
-        }
-
-        /* 关于我们 */
-        .about {
-            background-color: #f4f9f6;
-            padding: 70px 0;
-        }
-
-        .about-content {
-            display: flex;
-            gap: 48px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .about-text {
-            flex: 1.2;
-        }
-
-        .about-text h3 {
-            font-size: 1.9rem;
-            margin-bottom: 20px;
-            color: #1f3b2c;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            color: #2c4b3a;
-            font-size: 1.05rem;
-        }
-
-        .about-stats {
-            flex: 0.8;
-            background: #eaf4ef;
-            border-radius: 32px;
-            padding: 32px 24px;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: #1e6f3f;
-        }
-
-        /* 联系我们 */
-        .contact {
-            padding: 70px 0;
-            background: white;
-        }
-
-        .contact-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 48px;
-            background: #fefefe;
-            border-radius: 32px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
-            border: 1px solid #e2ece6;
-            padding: 32px 36px;
-        }
-
-        .contact-info {
-            flex: 1;
-        }
-
-        .contact-info h3 {
-            font-size: 1.7rem;
-            margin-bottom: 24px;
-            color: #1e6f3f;
-        }
-
-        .contact-detail {
-            margin: 20px 0;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            font-size: 1rem;
-        }
-
-        .contact-detail span:first-child {
-            font-weight: 600;
-            min-width: 70px;
-            color: #2f5e44;
-        }
-
-        .contact-map {
-            flex: 1;
-            background: #eef3ef;
-            border-radius: 24px;
-            padding: 24px;
-            text-align: center;
-        }
-
-        .contact-map iframe {
-            width: 100%;
-            height: 240px;
-            border-radius: 20px;
-            border: 0;
-        }
-
-        .fake-map {
-            background: #cfe3d6;
-            border-radius: 20px;
-            height: 240px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1e6f3f;
-            font-weight: 500;
-            font-size: 1rem;
-        }
-
-        /* footer */
-        .footer {
-            background-color: #0f2b1f;
-            color: #cfe3d6;
-            padding: 36px 0 24px;
-            text-align: center;
-        }
-
-        .footer p {
-            margin-top: 10px;
-            font-size: 0.85rem;
-        }
-
-        hr {
-            border-color: #2b4f3a;
-            margin: 20px 0;
-        }
-
-        a {
-            color: inherit;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VTART | 佛山市威塔智能设备有限公司</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,sans-serif;background:#f8fafc;color:#1f2937;line-height:1.6}
+.container{max-width:1280px;margin:auto;padding:0 24px}
+.navbar{position:sticky;top:0;background:#fff;z-index:99;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo h1{color:#0F2744}.logo p{font-size:12px;color:#666}
+.nav ul{display:flex;gap:24px;list-style:none}
+.nav a{text-decoration:none;color:#0F2744;font-weight:600}
+.hero{background:linear-gradient(135deg,#0F2744,#1E4E79);color:#fff;padding:100px 0}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.hero h2{font-size:54px;margin-bottom:20px}
+.carousel-container{position:relative;height:420px;border-radius:20px;overflow:hidden;background:rgba(255,255,255,.12)}
+.carousel-slide{position:absolute;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out;background-size:cover;background-position:center;background-repeat:no-repeat}
+.carousel-slide.active{opacity:1}
+.carousel-dots{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:10px}
+.dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer;transition:background .3s}
+.dot.active{background:#D9A441}
+.btn{display:inline-block;background:#D9A441;color:#fff;padding:12px 28px;border-radius:30px;text-decoration:none;margin-right:12px}
+.section{padding:80px 0}
+.title{text-align:center;font-size:36px;color:#0F2744;margin-bottom:50px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:#fff;padding:30px;border-radius:20px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.products{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}
+.product-img{height:260px;background:#e5e7eb;border-radius:16px;display:flex;align-items:center;justify-content:center}
+.detail{margin-top:30px}
+table{width:100%;border-collapse:collapse}
+td,th{border:1px solid #ddd;padding:12px}
+.contact{background:#0F2744;color:#fff}
+.footer{background:#081728;color:#fff;text-align:center;padding:25px}
+@media(max-width:768px){
+.hero-grid,.products,.grid3{grid-template-columns:1fr}
+.hero h2{font-size:38px}
+.nav{flex-direction:column;gap:10px}
+}
+</style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <div class="navbar">
-        <div class="container">
-            <div class="nav-flex">
-                <div class="logo">
-                    <h1>永铨食品机械</h1>
-                    <p>Yongquan Food Machinery</p>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#home">首页</a></li>
-                    <li><a href="#products">产品中心</a></li>
-                    <li><a href="#about">关于我们</a></li>
-                    <li><a href="#contact">联系我们</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
-    <!-- Hero 主视觉区 -->
-    <section id="home">
-        <div class="hero">
-            <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-text">
-                        <h2>匠心铸就品质<br>智造食品机械未来</h2>
-                        <p>佛山市永铨食品机械有限公司 — 专注食品机械设备研发、制造与整体解决方案，为全球客户提供高效、稳定的生产线设备。</p>
-                        <div class="hero-buttons">
-                            <a href="#products" class="btn">探索产品</a>
-                            <a href="#contact" class="btn btn-outline">获取报价</a>
-                        </div>
-                    </div>
-                    <div class="hero-image">
-                        <!-- 简单示意图标: 食品机械风格 SVG -->
-                        <svg class="hero-svg" viewBox="0 0 200 170" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="25" y="60" width="150" height="70" rx="12" fill="#267C48" fill-opacity="0.2" stroke="#267C48" stroke-width="2" />
-                            <circle cx="100" cy="95" r="18" fill="#267C48" fill-opacity="0.7" />
-                            <path d="M70 130 L130 130 L120 150 L80 150 L70 130Z" fill="#267C48" fill-opacity="0.6" />
-                            <rect x="45" y="30" width="30" height="30" rx="6" fill="#267C48" fill-opacity="0.4" />
-                            <rect x="125" y="30" width="30" height="30" rx="6" fill="#267C48" fill-opacity="0.4" />
-                            <text x="78" y="108" fill="white" font-size="12" font-weight="bold">⚙️</text>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<header class="navbar">
+<div class="container nav">
+<div class="logo">
+<h1>VTART</h1>
+<p>佛山市威塔智能设备有限公司</p>
+</div>
+<ul>
+<li><a href="#about">关于我们</a></li>
+<li><a href="#products">产品中心</a></li>
+<li><a href="#contact">联系我们</a></li>
+</ul>
+</div>
+</header>
 
-    <!-- 产品中心 -->
-    <section id="products">
-        <div class="container" style="padding: 70px 24px;">
-            <h2 class="section-title">核心产品系列</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-icon">🥟</div>
-                    <h3>饺子/春卷生产线</h3>
-                    <p>全自动成型、包馅、整形设备，产能高效，适用于速冻食品企业。</p>
-                </div>
-                <div class="product-card">
-                    <div class="product-icon">🍞</div>
-                    <h3>烘焙食品机械</h3>
-                    <p>和面机、分块滚圆机、醒发箱，打造完美面包、糕点生产线。</p>
-                </div>
-                <div class="product-card">
-                    <div class="product-icon">🥩</div>
-                    <h3>肉类加工设备</h3>
-                    <p>斩拌机、绞肉机、灌肠机，不锈钢材质，符合食品卫生标准。</p>
-                </div>
-                <div class="product-card">
-                    <div class="product-icon">🥬</div>
-                    <h3>果蔬切割清洗线</h3>
-                    <p>高效切割、气泡清洗，保留新鲜度，减少人工成本。</p>
-                </div>
-                <div class="product-card">
-                    <div class="product-icon">🧊</div>
-                    <h3>速冻配套设备</h3>
-                    <p>螺旋速冻机、隧道速冻机，快速锁鲜，节能稳定。</p>
-                </div>
-                <div class="product-card">
-                    <div class="product-icon">⚙️</div>
-                    <h3>定制化生产线</h3>
-                    <p>根据需求设计非标设备，提供整厂工艺规划服务。</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="hero">
+<div class="container hero-grid">
+<div>
+<h2>VTART Intelligent Equipment</h2>
+<p>专注食品加工自动化设备研发与制造</p>
+<p>Focus on Food Processing Automation Equipment</p>
+<br>
+<a class="btn" href="#products">查看产品</a>
+<a class="btn" href="#contact">联系我们</a>
+</div>
+<div class="carousel-container">
+  <div class="carousel-slide active" style="background-image: url('images/半熟芝士饼干成型机（全线款）.jpg')"></div>
+  <div class="carousel-slide" style="background-image: url('images/半熟芝士饼干成型机（经典款）.jpg')"></div>
+  <div class="carousel-slide" style="background-image: url('images/高速塔皮机.jpg')"></div>
+  <div class="carousel-dots">
+    <span class="dot active" onclick="currentSlide(0)"></span>
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+  </div>
+</div>
 
-    <!-- 核心优势 -->
-    <div class="advantages">
-        <div class="container">
-            <h2 class="section-title">永铨核心优势</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">🔧</div>
-                    <h4>精湛工艺</h4>
-                    <p>20年行业经验，严格品控，设备经久耐用</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🌏</div>
-                    <h4>全球服务</h4>
-                    <p>产品出口东南亚、欧美等多个国家地区</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">⚡</div>
-                    <h4>节能高效</h4>
-                    <p>采用优化动力系统，降低能耗提高产出</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🤝</div>
-                    <h4>全面售后</h4>
-                    <p>安装调试 + 操作培训 + 终身技术支持</p>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
+</section>
 
-    <!-- 关于我们 -->
-    <section id="about">
-        <div class="about">
-            <div class="container">
-                <div class="about-content">
-                    <div class="about-text">
-                        <h3>关于佛山市永铨食品机械</h3>
-                        <p>永铨食品机械坐落于粤港澳大湾区腹地——广东佛山，是一家集研发、设计、生产、销售及售后服务为一体的高新技术食品机械企业。自成立以来，始终致力于为食品加工行业提供稳定可靠、智能高效的自动化设备解决方案。</p>
-                        <p>我们拥有专业的工程师团队和现代化制造基地，产品涵盖了速冻米面制品、肉制品、烘焙糕点及果蔬加工等多个领域。永铨坚持以客户需求为导向，不断迭代技术，持续赢得国内外数百家企业的信赖与赞誉。</p>
-                        <p>品质如金，服务永铨 —— 我们不仅仅是设备制造商，更是您食品生产线的忠实伙伴。</p>
-                        <a href="#contact" style="margin-top: 20px; display: inline-block;" class="btn">与我们合作</a>
-                    </div>
-                    <div class="about-stats">
-                        <div class="stat-number">300+</div>
-                        <p>成功合作客户</p>
-                        <div class="stat-number" style="margin-top: 20px;">25+</div>
-                        <p>覆盖省份及出口国</p>
-                        <div class="stat-number" style="margin-top: 20px;">24/7</div>
-                        <p>售后响应支持</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="section">
+<div class="container">
+<h2 class="title">核心优势</h2>
+<div class="grid3">
+<div class="card"><h3>全304食品级不锈钢</h3><p>耐腐蚀、易清洁、不生锈。</p></div>
+<div class="card"><h3>纯机械高效率设计</h3><p>结构稳定、维护简单、生产效率高。</p></div>
+<div class="card"><h3>优质售后服务</h3><p>快速响应、技术支持、长期维护。</p></div>
+</div>
+</div>
+</section>
 
-    <!-- 联系我们 -->
-    <section id="contact">
-        <div class="contact">
-            <div class="container">
-                <h2 class="section-title">联系我们</h2>
-                <div class="contact-wrapper">
-                    <div class="contact-info">
-                        <h3>📞 获取设备方案与报价</h3>
-                        <div class="contact-detail">
-                            <span>📍 地址：</span>
-                            <span>广东省佛山市南海区狮山镇食品机械产业园B区6号</span>
-                        </div>
-                        <div class="contact-detail">
-                            <span>📞 电话：</span>
-                            <span>+86 0757-8123 4567</span>
-                        </div>
-                        <div class="contact-detail">
-                            <span>📱 手机：</span>
-                            <span>+86 139 2881 2345</span>
-                        </div>
-                        <div class="contact-detail">
-                            <span>✉️ 邮箱：</span>
-                            <span>sales@yongquan-machinery.com</span>
-                        </div>
-                        <div class="contact-detail">
-                            <span>🕒 时间：</span>
-                            <span>周一至周六 8:30-18:00</span>
-                        </div>
-                        <div style="margin-top: 28px;">
-                            <a href="mailto:sales@yongquan-machinery.com" class="btn" style="background-color: #267C48;">发送邮件咨询</a>
-                        </div>
-                    </div>
-                    <div class="contact-map">
-                        <h4 style="margin-bottom: 18px; color:#1e6f3f;">地理位置</h4>
-                        <!-- 嵌入静态地图占位(使用高德/百度插件不合适，直接展示友好的占位, 实际放置iframe模拟) 
-                             这里为了简洁，使用纯占位配合动态地图链接(备选用开放街道地图示例)，
-                             为保证页面干净，采用静态示意地址图框，用户可点击链接查看 -->
-                        <div class="fake-map">
-                            📍 佛山市南海区 · 永铨食品机械产业园
-                        </div>
-                        <p style="margin-top: 16px; font-size: 0.85rem;">欢迎来厂考察，可提前预约接送</p>
-                        <!-- 增加一个简单外部地图链接 (腾讯地图选点示意 不依赖第三方库) -->
-                        <a href="https://map.baidu.com/search/%E4%BD%9B%E5%B1%B1%E5%B8%82%E6%B0%B8%E9%93%A8%E9%A3%9F%E5%93%81%E6%9C%BA%E6%A2%B0%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/@12692338.336862642,2614218.422476093,19.06z?querytype=s&wd=%E4%BD%9B%E5%B1%B1%E5%B8%82%E6%B0%B8%E9%93%A8%E9%A3%9F%E5%93%81%E6%9C%BA%E6%A2%B0%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&c=257" target="_blank" style="display: inline-block; margin-top: 12px; color:#1e6f3f; text-decoration: underline;">查看地图导航 &gt;</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="section" id="about">
+<div class="container">
+<h2 class="title">关于我们</h2>
+<div class="products">
+<div>
+<p>佛山市威塔智能设备有限公司成立于2025年，坐落于佛山顺德伦教，是一家集研发、生产、销售于一体的创新型智能装备企业，专注半熟芝士饼干成型机和高速塔皮机研发制造。</p>
+<br>
+<p>公司拥有2项发明专利及多项实用新型专利，致力于为食品加工企业提供高效、稳定、高性价比自动化生产解决方案。</p>
+</div>
+<div class="card">
+<h3>企业数据</h3>
+<br>
+<p><strong>2+</strong> 发明专利</p>
+<p><strong>10+</strong> 实用新型专利</p>
+<p><strong>2025</strong> 成立年份</p>
+</div>
+</div>
+</div>
+</section>
 
-    <!-- 底部footer -->
-    <div class="footer">
-        <div class="container">
-            <div style="display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 20px;">
-                <span>© 2025 佛山市永铨食品机械有限公司</span>
-                <span>|</span>
-                <span>主营：食品生产线 / 速冻设备 / 定制方案</span>
-                <span>|</span>
-                <span>粤ICP备25031268号</span>
-            </div>
-            <p>匠心制造 · 诚信共赢 — 为全球食品企业提供卓越装备</p>
-        </div>
-    </div>
+<section class="section" id="products">
+<div class="container">
+<h2 class="title">产品中心</h2>
 
-    <!-- 简单的平滑滚动 无需额外库 -->
-    <script>
-        (function() {
-            // 所有导航链接点击平滑滚动
-            const links = document.querySelectorAll('.nav-links a, .hero-buttons a[href^="#"], .about-text .btn, .contact-info .btn');
-            links.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const targetId = this.getAttribute('href');
-                    if (targetId && targetId.startsWith('#')) {
-                        e.preventDefault();
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            targetElement.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                        }
-                    }
-                });
-            });
-            // 简单处理主页的按钮额外兼容
-            const heroBtn = document.querySelector('.hero-buttons .btn');
-            if(heroBtn && heroBtn.getAttribute('href') === '#products') {
-                heroBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.querySelector('#products').scrollIntoView({ behavior: 'smooth' });
-                });
-            }
-            const quoteBtn = document.querySelector('.hero-buttons .btn-outline');
-            if(quoteBtn && quoteBtn.getAttribute('href') === '#contact') {
-                quoteBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
-                });
-            }
-        })();
-    </script>
+<div class="products">
+
+<div class="card">
+<div class="product-img" style="background-image: url('images/半熟芝士饼干成型机（经典款）.jpg'); background-size: cover; background-position: center;"></div>
+<h3>半熟芝士饼干成型机（经典款）</h3>
+<p>适用于半熟芝士饼干、绿豆饼及各类粉末类饼干。</p>
+</div>
+
+<div class="card">
+<div class="product-img" style="background-image: url('images/半熟芝士饼干成型机（全线款）.jpg'); background-size: cover; background-position: center;"></div>
+<h3>半熟芝士饼干成型机（全线款）</h3>
+<p>升级版全自动生产线，效率更高，功能更全面。</p>
+</div>
+
+<div class="card">
+<div class="product-img" style="background-image: url('images/高速塔皮机.jpg'); background-size: cover; background-position: center;"></div>
+<h3>高速塔皮机</h3>
+<p>适用于商业蛋挞皮自动化生产。</p>
+</div>
+
+</div>
+
+<div class="detail">
+<h2 class="title">产品详情</h2>
+
+<div class="card">
+<h3>半熟芝士饼干成型机</h3>
+<ul>
+<li>专利防破脱模技术</li>
+<li>智能液压驱动系统（10吨压力）</li>
+<li>全流程自动化</li>
+<li>食品级不锈钢机身</li>
+<li>750×500mm托盘</li>
+<li>经典款/升级款/全线款</li>
+</ul>
+</div>
+
+<br>
+
+<div class="card">
+<h3>高速塔皮机参数</h3>
+<table>
+<tr><th>参数</th><th>数值</th></tr>
+<tr><td>尺寸</td><td>0.8×0.86×1.8m</td></tr>
+<tr><td>功率</td><td>1.3KW</td></tr>
+<tr><td>电压</td><td>220V</td></tr>
+<tr><td>气压</td><td>0.4-0.8MPa</td></tr>
+<tr><td>重量</td><td>138kg</td></tr>
+</table>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="section contact" id="contact">
+<div class="container">
+<h2 class="title" style="color:white">联系我们</h2>
+<p>佛山市威塔智能设备有限公司</p>
+<p>联系人：欧先生</p>
+<p>电话：13420765555</p>
+<p>地址：佛山市顺德区伦教街道新龙大道10号</p>
+<br>
+<div class="product-img">企业地图区域</div>
+</div>
+</section>
+
+<footer class="footer">
+© 2026 VTART Intelligent Equipment
+</footer>
+
+<script>
+let slideIndex = 0;
+const slides = document.querySelectorAll('.carousel-slide');
+const dots = document.querySelectorAll('.dot');
+
+function showSlide(index) {
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
+  
+  slideIndex = index;
+  if (slideIndex >= slides.length) slideIndex = 0;
+  if (slideIndex < 0) slideIndex = slides.length - 1;
+  
+  slides[slideIndex].classList.add('active');
+  dots[slideIndex].classList.add('active');
+}
+
+function currentSlide(index) {
+  showSlide(index);
+}
+
+function nextSlide() {
+  showSlide(slideIndex + 1);
+}
+
+// Auto-play carousel every 4 seconds
+setInterval(nextSlide, 4000);
+</script>
+
 </body>
 </html>
